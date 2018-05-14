@@ -1,0 +1,17 @@
+// set baseline attributes
+html,body,div,span,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,blockquote,pre,fieldset,input,textarea,select,button,form,label,table,caption,tbody,tfoot,thead,tr,th,td,abbr,address,article,aside,audio,cite,code,details,em,figcaption,figure,footer,header,hgroup,iframe,img,mark,menu,nav,object,section,small,strong,summary,time,video {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	}
+
+// set HTML5 display-role for older browsers
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+
+body {line-height:1;}// reset line-height
+ol, ul {list-style:none;}// clear list styling
+table {border-collapse:collapse;border-spacing:0;}// remove table style
+input, textarea, select {-webkit-appearance:none;-moz-appearance:none;appearance:none;}// remove vendor-applied input styling

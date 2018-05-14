@@ -1,0 +1,151 @@
+.button-list {
+	button,
+	.button {
+		font-weight: 500;
+		border-top-width: 0;
+		color: $black_1;
+		@include border_radius(0px);
+
+		&:hover {
+			color: $black_0;
+			border-color: $black_3;
+			}
+
+		&:active {
+			color: $black;
+			border-color: $black_3;
+			background-color: $black_6;
+			}
+
+		&:first-of-type {
+			border-top-width: 1px;
+			@include border_radius_single(top,left,$input_border_radius);
+			@include border_radius_single(top,right,$input_border_radius);
+			}
+
+		&:last-of-type {
+			@include border_radius_single(bottom,right,$input_border_radius);
+			@include border_radius_single(bottom,left,$input_border_radius);
+			}
+
+		&.selected {
+			font-weight: 600;
+			color: $black_0 !important;
+			}
+		}
+	}
+
+button {
+	cursor: pointer;
+	@include form-font();
+	@include unselectable();
+
+	&.text-only {
+		display: inline;
+		padding-left: 0.125em;
+		color: inherit;
+		font-size: inherit;
+		font-weight: 600;
+		letter-spacing: -0.03em;
+
+		&.primary,
+		&.active {
+			color: $blue_darker;
+
+			&:hover {
+				color: shade($blue_darker, 25%);
+				}
+			}
+
+		&:hover {
+			color: $black_1;
+			}
+		}
+
+	&.dropdown-button {
+		padding-right: 1.5em;
+
+		&:after {
+			right: 0.5em;
+			}
+		}
+	}
+
+.button {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.6875em 1.0em;
+	text-align: center;
+	font-size: $text_size_min;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: $body_color_text;
+	border: 1px solid $black_3;
+	background-color: $input_color_action;
+	@include unselectable;
+	@include text_legibility;
+	@include border_radius($input_border_radius);
+	@include gradient_tb($white, 0%, $black_5, 100%);
+
+	&:hover {
+		color: shade($black_0, 20%);
+		border-color: tint($black_2, 25%);
+		}
+
+	&:active {
+		@include gradient_tb($black_4, 0%, $black_5, 100%);
+		}
+	}
+
+//--------------------
+//  BUTTON STYLES
+.button {
+	&.outline {
+		background: transparent;
+		}
+
+	&.heavy {
+		color: $black_6;
+		font-weight: 600;
+		border-color: $black_0;
+		@include gradient_tb($black_0, 0%, shade($black_0, 50%), 100%);
+
+		&:hover {
+			color: $white;
+			border-color: $black;
+			}
+
+		&:active {
+			@include gradient_tb($black, 0%, shade($black_0, 75%), 100%);
+			}
+		}
+
+	&.primary,
+	&.active {
+		color: $black_6;
+		border-color: shade($blue_darker, 8%);
+		@include gradient_tb($input_color_action, 0%, $blue_darker, 100%);
+
+		&:after {
+			border-color: tint($black_2, 25%) transparent transparent transparent;
+			}
+
+		&:hover {
+			color: $white;
+			border-color: shade($blue_darker, 25%);
+			}
+
+		&:active {
+			color: $white;
+			@include gradient_tb(shade($blue_darker, 5%), 0%, $blue_darker, 100%);
+			}
+		}
+
+	&.bigger {
+		padding: 1.0em;
+		}
+
+	&.full-width {
+		width: 100%;
+		}
+	}

@@ -1,0 +1,36 @@
+#page-grid {
+	display: grid;
+	height: 100%;
+	grid-gap: 0;
+	align-items: stretch;
+	align-content: stretch;
+	justify-items: stretch;
+	justify-content: stretch;
+
+	.grid-item {
+		align-self: stretch;
+		justify-self: stretch;
+		}
+	}
+
+body#search {
+	#page-grid {
+		grid-template-rows: [header-start] auto [header-end main-start] 100fr [main-end];
+		grid-template-columns: [sidebar-start] 340px [sidebar-end content-start] 60fr [content-end];
+		grid-template-areas:
+			"header header"
+			"sidebar content";
+		}
+
+	#page-header {
+		grid-area: header;
+		}
+
+	#page-sidebar {
+		grid-area: sidebar;
+		}
+
+	#page-content {
+		grid-area: main-start / content-start / main-end / content-end;
+		}
+	}

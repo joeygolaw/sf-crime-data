@@ -1,0 +1,34 @@
+// Basic Animation Mixin
+@mixin animate_basic($type) {
+	-webkit-animation-name: $type;
+	-moz-animation-name: $type;
+	-o-animation-name: $type;
+	animation-name: $type;
+	}
+
+@mixin animate($name,$i,$l,$d,$f,$m) {
+	-webkit-animation-name: $name;
+	-webkit-animation-duration: $l;
+	-webkit-animation-delay: $d;
+	-webkit-animation-iteration-count: $i;
+	-webkit-animation-timing-function: $f;
+	-webkit-animation-fill-mode: $m;
+	-moz-animation-name: $name;
+	-moz-animation-duration: $l;
+	-moz-animation-delay: $d;
+	-moz-animation-iteration-count: $i;
+	-moz-animation-timing-function: $f;
+	-moz-animation-fill-mode: $m;
+	-o-animation-name: $name;
+	-o-animation-duration: $l;
+	-o-animation-delay: $d;
+	-o-animation-iteration-count: $i;
+	-o-animation-timing-function: $f;
+	-o-animation-fill-mode: $m;
+	animation-name: $name;
+	animation-duration: $l;
+	animation-delay: $d;
+	animation-iteration-count: $i;
+	animation-timing-function: $f;
+	animation-fill-mode: $m;
+	}

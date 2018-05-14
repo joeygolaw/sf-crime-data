@@ -1,0 +1,304 @@
+//--------------------
+// UTLITIES
+@function strip_unit($value) {
+	@return $value / ($value * 0 + 1);
+	}
+
+//--------------------
+// COLORS
+$white: #FFF;
+$black: #000;
+
+// Tint
+@function tint($color, $percent) {
+	@return mix($white, $color, $percent);
+	}
+// Shade
+@function shade($color, $percent) {
+	@return mix($black, $color, $percent);
+	}
+
+//--------------------
+// TEXT
+// Sizing
+// adapted from source: https://css-tricks.com/snippets/css/fluid-typography/
+
+@mixin typography_range($pw_min, $pw_max, $ts_min, $ts_max, $lh_min, $lh_max) {
+	$p_min: unit($pw_min);
+	$p_max: unit($pw_max);
+	$t_min: unit($ts_min);
+	$t_max: unit($ts_max);
+
+	@if $p_min == $p_max and $p_min == $t_min and $p_min == $t_max {
+
+		& {
+			font-size: $ts_min;
+			line-height: $lh_min;
+
+			@media screen and (min-width: $pw_min) {
+				font-size: calc(#{$ts_min} + #{strip_unit($ts_max - $ts_min)} * ((100vw - #{$pw_min}) / #{strip_unit($pw_max - $pw_min)}));
+				line-height: calc(#{$lh_min} + #{strip_unit($lh_max - $lh_min)} * ((100vw - #{$pw_min}) / #{strip_unit($pw_max - $pw_min)}));
+				}
+
+			@media screen and (min-width: $pw_max) {
+				font-size: $ts_max;
+				line-height: $lh_max;
+				}
+			}
+		}
+	}
+
+// Legibility
+@mixin text_legibility {
+	-webkit-font-smoothing: antialiased;// Webkit
+	text-rendering: optimizeLegibility;// Firefox
+	}
+
+// Text Shadow
+@mixin text_shadow($h-shadow: 0px, $v-shadow: 1px, $blur: 1px, $color: $white) {
+	text_shadow: $h-shadow $v-shadow $blur $color;
+	}
+
+//--------------------
+// FORMS
+// must be separate values to avoid invalidating field and form b/c invalid property
+@mixin input_placeholder_color($color) {
+	&::-webkit-input-placeholder {color: $color;}
+	&::-moz-placeholder {color: $color;}
+	&:-moz-placeholder {color: $color;}
+	&:-ms-input-placeholder {color: $color;}
+	}
+
+//--------------------
+// GENERAL
+@mixin border_radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+	}
+
+@mixin border_radius_single($side-tb, $side-lr, $radius: 3px) {
+	-webkit-border-#{$side-tb}-#{$side-lr}-radius: $radius;
+	-moz-border-radius-#{$side-tb}#{$side-lr}: $radius;
+	border-#{$side-tb}-#{$side-lr}-radius: $radius;
+	}
+
+@mixin box_sizing($box-model) {
+	-webkit-box-sizing: $box-model;
+	-moz-box-sizing: $box-model;
+	-ms-box-sizing: $box-model;
+	box-sizing: $box-model;
+	}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	filter:	alpha(opacity=$opacity*100);
+	}
+
+// Background Size: Numerical
+@mixin background_size($width,$height) {
+	-webkit-background-size: $width $height;
+	-moz-background-size: $width $height;
+	-o-background-size: $width $height;
+	background-size: $width $height;
+	}
+
+// Background Size: Non-Numerical
+@mixin background_sizeNN($value) {
+	-webkit-background-size: $value;
+	-moz-background-size: $value;
+	-o-background-size: $value;
+	background-size: $value;
+	}
+
+@mixin tap_highlight_color($color) {
+	-webkit-tap-highlight-color: $color;
+	-moz-tap-highlight-color: $color;
+	-o-tap-highlight-color: $color;
+	tap-highlight-color: $color;
+	}
+
+// Disable Selection
+@mixin unselectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	}
+
+@mixin appearance($type) {
+	-webkit-appearance: $type;
+	-moz-appearance: $type;
+	appearance: $type;
+	}
+
+//--------------------
+// ANIMATIONS & EFFECTS
+@mixin transition($property, $duration, $function) {
+	-webkit-transition-property: $property;
+	-webkit-transition-duration: #{$duration}ms;
+	-webkit-transition-timing-function: $function;
+	-moz-transition-property: $property;
+	-moz-transition-duration: #{$duration}ms;
+	-moz-transition-timing-function: $function;
+	-o-transition-property: $property;
+	-o-transition-duration: #{$duration}ms;
+	-o-transition-timing-function: $function;
+	transition-property: $property;
+	transition-duration: #{$duration}ms;
+	transition-timing-function: $function;
+	}
+
+//--------------------
+// TRANSFORM
+// Translate
+@mixin transform_translate($x,$y) {
+	-webkit-transform: translate($x,$y);
+	-moz-transform: translate($x,$y);
+	-ms-transform: translate($x,$y);
+	-o-transform: translate($x,$y);
+	transform: translate($x,$y);
+	}
+
+// Rotate
+@mixin transform_rotate($degree) {
+	-webkit-transform: rotate($degree);
+	-moz-transform: rotate($degree);
+	-ms-transform: rotate($degree);
+	-o-transform: rotate($degree);
+	transform: rotate($degree);
+	}
+
+// Rotate and Scale
+@mixin transform_rotate_scale($degree,$scaler) {
+	-webkit-transform: rotate($degree) scale($scaler);
+	-moz-transform: rotate($degree) scale($scaler);
+	-ms-transform: rotate($degree) scale($scaler);
+	-o-transform: rotate($degree) scale($scaler);
+	transform: rotate($degree) scale($scaler);
+	}
+
+// Rotate and Translate
+@mixin transform_rotate_translate($degree,$x,$y) {
+	-webkit-transform: rotate($degree) translate($x,$y);
+	-moz-transform: rotate($degree) translate($x,$y);
+	-ms-transform: rotate($degree) translate($x,$y);
+	-o-transform: rotate($degree) translate($x,$y);
+	transform: rotate($degree) translate($x,$y);
+	}
+
+// Scale X
+@mixin transform_scaleX($x) {
+	-webkit-transform: scaleX($x);
+	-moz-transform: scaleX($x);
+	-ms-transform: scaleX($x);
+	-o-transform: scaleX($x);
+	transform: scaleX($x);
+	}
+
+// Scale Y
+@mixin transform_scaleY($y) {
+	-webkit-transform: scaleY($y);
+	-moz-transform: scaleY($y);
+	-ms-transform: scaleY($y);
+	-o-transform: scaleY($y);
+	transform: scaleY($y);
+	}
+
+// Scale XY
+@mixin transform_scaleXY($x,$y) {
+	-webkit-transform: scale($x,$y);
+	-moz-transform: scale($x,$y);
+	-ms-transform: scale($x,$y);
+	-o-transform: scale($x,$y);
+	transform: scale($x,$y);
+	}
+
+// Columns
+@mixin columns($width: auto, $count: auto, $gap: auto, $rule-width: 0px, $rule-style: solid, $rule-color: #AAA) {
+	columns: $width $count;
+	-moz-columns: $width $count;
+	-webkit-columns: $width $count;
+	column-gap: $gap;
+	-moz-column-gap: $gap;
+	-webkit-column-gap: $gap;
+	column-rule: $rule-width $rule-style $rule-color;
+	-moz-column-rule: $rule-width $rule-style $rule-color;
+	-webkit-column-rule: $rule-width $rule-style $rule-color;
+	}
+
+// Box Shadow: Normal
+@mixin box_shadow($h-shadow: 0px, $v-shadow: 1px, $blur: 1px, $spread: 2px, $opacity: 0.15) {
+	-webkit-box-shadow: $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	-moz-box-shadow: $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	box-shadow: $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	}
+
+// Box Shadow: Inset
+@mixin box_shadow_inset($h-shadow: 0px, $v-shadow: 1px, $blur: 1px, $spread: 2px, $opacity: 0.15) {
+	-webkit-box-shadow: inset $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	-moz-box-shadow: inset $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	box-shadow: inset $h-shadow $v-shadow $blur $spread rgba(0,0,0,$opacity);
+	}
+
+// Box Shadow: Color
+@mixin box_shadow_color($h-shadow: 0px, $v-shadow: 1px, $blur: 0px, $spread: 0px, $color: none) {
+	-webkit-box-shadow: $h-shadow $v-shadow $blur $spread $color;
+	-moz-box-shadow: $h-shadow $v-shadow $blur $spread $color;
+	box-shadow: $h-shadow $v-shadow $blur $spread $color;
+	}
+
+// Box Shadow: Inset Color
+@mixin box_shadow_inset_color($h-shadow: 0px, $v-shadow: 1px, $blur: 0px, $spread: 0px, $color: none) {
+	-webkit-box-shadow: inset $h-shadow $v-shadow $blur $spread $color;
+	-moz-box-shadow: inset $h-shadow $v-shadow $blur $spread $color;
+	box-shadow: inset $h-shadow $v-shadow $blur $spread $color;
+	}
+
+// Box Shadow: Inset/Outset
+@mixin box_shadow_in_out(
+		$in-h-shadow: 0px, $in-v-shadow: 1px, $in-blur: 0px, $in-spread: 0px, $in-color: none,
+		$out-h-shadow: 0px, $out-v-shadow: 1px, $out-blur: 0px, $out-spread: 0px, $out-color: none
+		) {
+	-webkit-box-shadow: inset $in-h-shadow $in-v-shadow $in-blur $in-spread $in-color, $out-h-shadow $out-v-shadow $out-blur $out-spread $out-color;
+	-moz-box-shadow: inset $in-h-shadow $in-v-shadow $in-blur $in-spread $in-color, $out-h-shadow $out-v-shadow $out-blur $out-spread $out-color;
+	box-shadow: inset $in-h-shadow $in-v-shadow $in-blur $in-spread $in-color, $out-h-shadow $out-v-shadow $out-blur $out-spread $out-color;
+	}
+
+// Box Shadow: None
+@mixin no_box_shadow {
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	}
+
+// Gradients: Horizontal (L-R)
+@mixin gradient_lr($start, $start-point, $stop, $stop-point) {
+	background: $stop;
+	background: -webkit-linear-gradient(left, $start $start-point, $stop $stop-point);
+	background: -moz-linear-gradient(left, $start $start-point, $stop $stop-point);
+	background: -ms-linear-gradient(left, $start $start-point, $stop $stop-point);
+	background: -o-linear-gradient(left, $start $start-point, $stop $stop-point);
+	background: linear-gradient(left, $start $start-point, $stop $stop-point);
+	}
+
+// Gradients: Vertical (T-B)
+@mixin gradient_tb($start, $start-point, $stop, $stop-point) {
+	background: $stop;
+	background: -webkit-linear-gradient(top, $start $start-point, $stop $stop-point);
+	background: -moz-linear-gradient(top, $start $start-point, $stop $stop-point);
+	background: -ms-linear-gradient(top, $start $start-point, $stop $stop-point);
+	background: -o-linear-gradient(top, $start $start-point, $stop $stop-point);
+	background: linear-gradient(top, $start $start-point, $stop $stop-point);
+	}
+
+// Gradients: Angled
+@mixin gradient_angle($angle, $start, $start-point, $stop, $stop-point) {
+	background: $stop;
+	background: -webkit-linear-gradient($angle, $start $start-point, $stop $stop-point);
+	background: -moz-linear-gradient($angle, $start $start-point, $stop $stop-point);
+	background: -ms-linear-gradient($angle, $start $start-point, $stop $stop-point);
+	background: -o-linear-gradient($angle, $start $start-point, $stop $stop-point);
+	background: linear-gradient($angle, $start $start-point, $stop $stop-point);
+	}

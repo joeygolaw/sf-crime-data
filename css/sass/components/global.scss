@@ -1,0 +1,40 @@
+html {
+	height: 100%;
+	font-size: $text_size_min;
+	background-color: $body_color_background;
+	@include box_sizing(border-box);
+	}
+
+*,
+*:before,
+*:after {
+	@include box_sizing(inherit);
+	}
+
+body {
+	overflow-x: hidden;
+	height: 100%;
+	min-width: $page_width_min;
+	max-width: $page_width_max;
+	min-height: $page_height_min;
+	max-height: $page_height_max;
+	margin: 0 auto;
+	background-color: inherit;
+	@include body_font;
+	@include text_legibility;
+	}
+
+::selection {
+	color: $black;
+	background-color: tint($input_color_action, 33%);
+	}
+
+a {
+	text-decoration: none;
+	color: $input_color_action;
+	}
+
+// Alignment
+.pull-clear {clear: both;}
+.pull-left {float: left;}
+.pull-right {float: right;}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SF Crime Data - Search</title>
+
+	<!--Meta-->
+	<meta charset="utf-8" />
+	<meta name="robots" content="index, follow" />
+	<meta name="viewport" content="user-scalable=no, width=device-width, maximum-scale=1" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="copyright" content="" />
+
+	<!--JS-->
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	<!--CSS-->
+	<link rel="stylesheet" href="css/style.css">
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
+	<!--Twitter-->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+
+	<!--Misc-->
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+</head>
+
+
+
+
+<body id="search">
+<div id="page-grid">
+
+	<!--Header-->
+	<header id="page-header" class="grid-item" role="banner">
+		<nav role="navigation">
+			<ul role="menubar">
+				<li id="site-logo" role="presentation"><a href="#" role="menuitem">SF Crime Data</a></li>
+				<li role="presentation"><a href="#" role="menuitem">Safety</a></li>
+				<li role="presentation"><a href="#" role="menuitem">About</a></li>
+				<li role="presentation"><a href="#" role="menuitem">Help</a></li>
+				<li role="presentation" class="pull-right"><a href="#" role="menuitem">Send Feedback</a></li>
+			</ul>
+		</nav>
+
+		<div id="search-inputs">
+
+			<div id="location">
+				<label class="above-field" for="search">Search</label>
+				<div class="search-field">
+					<span class="inner-label">Near</span>
+					<input name="search" type="text" placeholder="San Francisco, CA">
+				</div>
+			</div>
+
+			<div id="filters">
+				<label class="above-field">Filters</label>
+
+				<fieldset>
+					<!--Date Range-->
+					<div id="date-range" class="dropdown-field">
+						<button class="button dropdown-button active"><span id="date-range-start">Mar 1</span> — <span id="date-range-end">13</span></button>
+
+						<div class="dropdown-popup">
+
+							<div class="dropdown-header">
+								<button class="dropdown-cancel text-only">Cancel</button>
+								<button class="dropdown-apply text-only primary pull-right">Apply</button>
+							</div>
+
+							<div class="dropdown-content">
+
+								<fieldset class="dropdown-field full-width">
+									<button class="button dropdown-button full-width primary" data-preset-date-range="custom">Custom Range</button>
+
+									<div class="dropdown-popup outline full-width">
+										<ul id="date-range-presets" class="button-list">
+											<li class="button outline full-width" data-preset-date-range="days-previous-30">Last 30 days</li>
+											<li class="button outline full-width" data-preset-date-range="month-current">This Month</li>
+											<li class="button outline full-width" data-preset-date-range="month-previous">Last Month</li>
+											<li class="button outline full-width" data-preset-date-range="quarter-current">This Quarter</li>
+											<li class="button outline full-width" data-preset-date-range="quarter-previous">Last Quarter</li>
+											<li class="button outline full-width" data-preset-date-range="year-current">This Year</li>
+											<li class="button outline full-width" data-preset-date-range="year-previous">Last Year</li>
+											<li class="button outline full-width selected" data-preset-date-range="custom">Custom Range</li>
+										</ul>
+									</div>
+								</fieldset>
+
+								<fieldset>
+									<input type="text" class="pull-left" name="date-range-start" placeholder="MM/DD/YYYY" value="03/01/2018"><label class="above-field">TO</label><input type="text" class="pull-right" name="date-range-end" placeholder="MM/DD/YYYY" value="03/13/2018">
+								</fieldset>
+
+								<fieldset id="calendar-month-controls">
+									<button id="month-previous" class="button outline pull-left">Previous Month</button>
+									<span id="calendar-title"><span class="current-month">March</span> <span class="current-year">2018</span></span>
+									<button id="month-next" class="button outline pull-right">Next Month</button>
+								</fieldset>
+
+								<fieldset>
+									<table id="calendar">
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="active-day range-start">1</td>
+											<td class="active-day range-between">2</td>
+											<td class="active-day range-between">3</td>
+										</tr>
+										<tr>
+											<td class="active-day range-between">4</td>
+											<td class="active-day range-between">5</td>
+											<td class="active-day range-between">6</td>
+											<td class="active-day range-between">7</td>
+											<td class="active-day range-between">8</td>
+											<td class="active-day range-between">9</td>
+											<td class="active-day range-between">10</td>
+										</tr>
+										<tr>
+											<td class="active-day range-between">11</td>
+											<td class="active-day range-between">12</td>
+											<td class="active-day range-end">13</td>
+											<td class="active-day">14</td>
+											<td class="active-day">15</td>
+											<td class="active-day">16</td>
+											<td class="active-day">17</td>
+										</tr>
+										<tr>
+											<td class="active-day">18</td>
+											<td class="active-day">19</td>
+											<td class="active-day">20</td>
+											<td class="active-day">21</td>
+											<td class="active-day">22</td>
+											<td class="active-day">23</td>
+											<td class="active-day">24</td>
+										</tr>
+										<tr>
+											<td class="active-day">25</td>
+											<td class="active-day">26</td>
+											<td class="active-day">27</td>
+											<td class="active-day">28</td>
+											<td class="active-day">29</td>
+											<td class="active-day">30</td>
+											<td class="active-day">31</td>
+										</tr>
+								</table>
+								</fieldset>
+							</div>
+
+							<div class="dropdown-footer">
+								No data available after: <span class="pull-right">Mar 13, 2018</span>
+							</div>
+						</div>
+					</div>
+
+					<!--Resolution-->
+					<div id="resolution" class="dropdown-field">
+						<button class="button dropdown-button">Resolution</button>
+						<div class="dropdown-popup narrow">
+							<div class="dropdown-header">
+								<button class="dropdown-cancel text-only">Cancel</button>
+								<button class="dropdown-apply text-only primary pull-right">Apply</button>
+							</div>
+							<div class="dropdown-content">
+								<ul class="check-radio-list">
+									<li class="check-item"><input type="checkbox" name="arrest-booked" value="" checked><label for="arrest-booked">Arrest, Booked</label></li>
+									<li class="check-item"><input type="checkbox" name="arrest-cited" value="" checked><label for="arrest-cited">Arrest, Cited</label></li>
+									<li class="check-item"><input type="checkbox" name="cleared-contact" value="" checked><label for="cleared-contact">Cleared-Contact Juvenile for more info</label></li>
+									<li class="check-item"><input type="checkbox" name="exceptional-clearance" value="" checked><label for="exceptional-clearance">Exceptional Clearance</label></li>
+									<li class="check-item"><input type="checkbox" name="juvenile-booked" value="" checked><label for="juvenile-booked">Juvenile Booked</label></li>
+									<li class="check-item"><input type="checkbox" name="unfounded" value=""><label for="unfounded">Unfounded</label></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</header>
+
+	<!--Main-->
+		<!--Sidebar-->
+		<aside id="page-sidebar" class="grid-item" role="complementary">
+			<header id="sidebar-header">
+				<div class="title"><span class="records-match-count">193</span> matching records</div>
+				<div class="sub-title">
+					grouped by
+					<!--Crime Categories-->
+					<div id="crime-categories" class="dropdown-field text-only">
+						<button class="text-only dropdown-button" data-crime-category="crime-safety-categories">Crime Safety Categories</button>
+						<div class="dropdown-popup narrow outline full-width">
+							<ul id="date-range-presets" class="button-list">
+								<li class="button outline full-width selected" data-crime-category="crime-safety-categories">Crime Safety Categories</li>
+								<li class="button outline full-width" data-crime-category="sfpd-crime-categories">SFPD Crime Categories</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div id="sidebar-content">
+				<fieldset id="data-categories">
+					<ul class="check-radio-list">
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="arson" value="">
+							<label for="arson">Arson</label>
+							<span class="data-crime-count">0</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="assault" value="" checked>
+							<label for="assault">Assault</label>
+							<span class="data-crime-count">27</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="burglary" value="" checked>
+							<label for="burglary">Burglary</label>
+							<span class="data-crime-count">33</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="dating-violence" value="" checked>
+							<label for="dating-violence">Dating Violence</label>
+							<span class="data-crime-count">12</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="domestic-violence" value="" checked>
+							<label for="domestic-violence">Domestic Violence</label>
+							<span class="data-crime-count">13</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="drug-possession" value="" checked>
+							<label for="drug-possession">Drug Possession</label>
+							<span class="data-crime-count">15</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="general-crime" value="">
+							<label for="general-crime">General Crime</label>
+							<span class="data-crime-count">0</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="hate-crime" value="" checked>
+							<label for="hate-crime">Hate Crime</label>
+							<span class="data-crime-count">1</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="liquor-violation" value="">
+							<label for="liquor-violation">Liquor Violation</label>
+							<span class="data-crime-count">7</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="vehicle-theft" value="">
+							<label for="vehicle-theft">Motor Vehicle Theft</label>
+							<span class="data-crime-count">19</span>
+						</li>
+						<li class="check-item map-category-selected">
+							<input type="checkbox" class="condensed" name="robbery" value="" checked>
+							<label for="robbery">Robbery</label>
+							<span class="data-crime-count">23</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="sex-crimes" value="" checked>
+							<label for=sex-crimes"">Sex Crimes</label>
+							<span class="data-crime-count">12</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="stalking" value="" checked>
+							<label for="stalking">Stalking</label>
+							<span class="data-crime-count">0</span>
+						</li>
+						<li class="check-item">
+							<input type="checkbox" class="condensed" name="weapons-possession" value="" checked>
+							<label for="weapons-possessions">Weapons Possessions</label>
+							<span class="data-crime-count">1</span>
+						</li>
+					</ul>
+				</fieldset>
+
+				<fieldset id="data-actions">
+					<button class="bigger button full-width">View Dataset</button>
+					<button class="bigger heavy button full-width">Export Crime Data</button>
+				</fieldset>
+			</div>
+		</aside>
+
+		<!--Content-->
+		<main id="page-content" class="grid-item" role="main">
+			<div id="map-container">
+				<div id="map"></div>
+			</div>
+		</main>
+
+</div>
+
+<!--JS-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js"></script>
+<script type="text/javascript" src="js/mapbox.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		inputSearch();
+		inputDropdown();
+		presetDateRange();
+		crimeCategories();
+		dataCategories();
+		});
+</script>
+
+
+</body>
+</html>

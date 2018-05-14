@@ -1,0 +1,56 @@
+//--------------------
+// COLORS
+$orange: #ff7700;
+$blue: #2782b9;
+$blue_darker: #1877af;
+$blue_darkest: #183442;
+$black_0: #333;
+$black_1: #666;
+$black_2: #999;
+$black_3: #ccc;
+$black_4: #ddd;
+$black_5: #eee;
+$black_6: #f6f6f6;
+
+$body_color_background: $white;
+$body_color_text: $black_0;
+
+$input_color_border: $black_4;
+$input_color_action: $blue;
+
+//--------------------
+// STRUCTURE
+$page_width_min: 800px;// This is only temporary, until a mobile layout is completed
+$page_width_max: 100vw;
+$page_height_min: 520px;
+$page_height_max: 100vh;
+
+//--------------------
+// TYPOGRAPHY
+$text_size_min: 16px;
+$text_size_max: 20px;
+
+$text_line_height_min: 1.125em;
+$text_line_height_max: 1.375em;
+
+//--------------------
+// INPUTS
+$input_border_radius: 3px;
+
+@mixin body_font {
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Oxygen", "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+	font-style: inherit;
+	-webkit-font-smoothing: antialiased;
+	}
+
+@mixin form_font {
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Oxygen", "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+	font-style: inherit;
+	-webkit-font-smoothing: antialiased;
+	}
+
+//--------------------
+// TRANSITIONS
+@mixin transition_general($duration:100) {
+	@include transition(all, $duration, ease-in-out);
+	}

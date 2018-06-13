@@ -1,0 +1,14 @@
+body#search {
+	#page-header {
+		background-color: $black_0;
+		}
+
+	#page-sidebar {
+		background-color: $white;
+		@include box-shadow(2px,0px,4px,0px,0.25);
+		}
+
+	#page-content {
+		background-color: $black_6;
+		}
+	}

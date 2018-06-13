@@ -1,0 +1,34 @@
+#page-header {
+	nav[role="navigation"] {
+		padding: 1.0em 1.5em 0.375em 1.5em;
+		}
+
+	ul[role="menubar"] {
+		li {
+			vertical-align: text-bottom;
+			display: inline-block;
+			margin-right: 1.25em;
+
+			a {
+				color: $black_3;
+				font-size: 1.0em;
+				letter-spacing: -0.01em;
+				}
+
+			// Logo
+			&:first-of-type {
+				a {
+					color: $black_5;
+					font-size: 1.375em;
+					font-weight: 700;
+					letter-spacing: -0.005em;
+					}
+				}
+
+			&:last-of-type {
+				margin-top: 0.375em;
+				margin-right: 0;
+				}
+			}
+		}
+	}

@@ -19,7 +19,8 @@ body#search {
 		grid-template-columns: [sidebar-start] 340px [sidebar-end content-start] 60fr [content-end];
 		grid-template-areas:
 			"header header"
-			"sidebar content";
+			"sidebar content"
+			"footer footer";
 		}
 
 	#page-header {
@@ -32,5 +33,9 @@ body#search {
 
 	#page-content {
 		grid-area: main-start / content-start / main-end / content-end;
+		}
+
+	#page-footer {
+		grid-area: footer;
 		}
 	}

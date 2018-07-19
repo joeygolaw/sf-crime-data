@@ -1,8 +1,8 @@
-var CNF_MAPBOX_TOKEN = 'pk.eyJ1Ijoiam9leWdvbGF3IiwiYSI6ImNqZzZ0bGk2NTM1dDMycW82d2preTI4a3IifQ.VYQSU09wayEKUQqZFVRSQQ';
-var CNF_MAPZEN_KEY = 'Mapbox Key Goes Here';
-var CNF_ANALYTIC_KEY = 'Google Analytics Key Goes Here';
+var CNF_MAPBOX_TOKEN = 'Mapbox key goes here';
+var CNF_MAPZEN_KEY = 'Mapzen key goes here';
+var CNF_ANALYTIC_KEY = 'Google Analytics key goes here';
 
-var CNF_ADMIN_EMAIL= 'Admin Email Goes Here';
+var CNF_ADMIN_EMAIL= 'Admin Email Goes goes Here';
 var CNF_FEEDBACK_SUBJECT = 'SF Crime Data Feedback';
 
 $(document).ready(function() {

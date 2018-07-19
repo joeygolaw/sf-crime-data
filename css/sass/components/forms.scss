@@ -12,7 +12,7 @@ select,
 label,
 .search-field,
 .dropdown-button {
-	font-size: $text_size_min;
+	font-size: $text_size_form;
 	word-wrap: break-word;
 	@include form_font;
 	@include text_legibility;
@@ -26,6 +26,7 @@ textarea,
 input[type="checkbox"],
 select,
 .search-field {
+	height: auto;
 	padding: 0.625em;
 	border-style: solid;
 	border-width: 1px;
@@ -50,6 +51,7 @@ select,
 .search-field {
 	width: 100%;
 	max-width: 100%;
+	line-height: normal;
 	color: $body_color_text;
 	background-color: $white;
 	@include input_placeholder_color(grey);
@@ -71,9 +73,12 @@ select,
 		}
 	}
 
-label {
+label,
+span.label {
 	display: inline-block;
 	line-height: 1.5em;
+	font-size: 0.9375em;
+	font-weight: normal;
 
 	&.above-field {
 		padding: 0.333333333em;
@@ -85,7 +90,8 @@ label {
 		}
 	}
 
-fieldset {
+fieldset,
+.fieldset {
 	margin-bottom: 1.25em;
 
 	&:last-of-type {
@@ -113,12 +119,18 @@ input[type="password"] {
 		display: inline-block;
 		padding: 0.625em;
 		font-weight: 600;
+		line-height: 1.0em;
 		}
 
 	input {
 		padding-left: 3.625em;
 		padding-right: 2.75em;
 		border: 0;
+
+		&:focus {
+			@include border-radius-single(bottom,left,0px);
+			@include border-radius-single(bottom,right,0px);
+			}
 		}
 
 		// Search icon
@@ -240,17 +252,13 @@ input[type="password"] {
 	position: absolute;
 	top: 2.75em;
 	left: 0;
-	width: 320px;
+	width: auto;
 	min-width: 250px;
 	padding: 1px;
 	border: 1px solid $input-color-border;
 	background-color: $white;
 	@include box-shadow(0px,10px,20px,0px,0.33);
 	@include border_radius($input_border_radius);
-
-	&.narrow {
-		width: 250px;
-		}
 
 	&.full-width {
 		width: 100%;
@@ -264,7 +272,12 @@ input[type="password"] {
 	.dropdown-header {
 		padding: 0.875em 0.625em;
 		color: $black_2;
+		font-size: 1.0em;
 		border-bottom: 1px solid $input_color_border;
+
+		button {
+			font-size: 0.875em;
+			}
 		}
 
 	.dropdown-content {
@@ -273,8 +286,9 @@ input[type="password"] {
 
 	.dropdown-footer {
 		color: $black_1;
-		padding: 0.875em 1.5em;
-		font-size: 0.9375em;
+		padding: 1.5em;
+		font-size: 0.8125em;
+		text-align: center;
 		border-top: 1px solid $input_color_border;
 		background-color: $black_6;
 		}
@@ -310,6 +324,7 @@ input[type="checkbox"] {
 	vertical-align: top;
 	width: 1.5em;
 	height: 1.5em;
+	margin-top: 0;
 	margin-right: 0.75em;
 	border-color: $black_2;
 	@include border_radius($input_border_radius);

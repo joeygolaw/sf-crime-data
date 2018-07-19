@@ -1,2 +1,32 @@
 #page-footer {
+	padding: 0.75em 0.5em 0.5em 2.5em;
+	color: $black_3;
+
+	.footer-copyright {
+		float: left;
+		font-size: 0.75em;
+		}
+
+	.nav {
+		text-align: right;
+
+		ul {
+			li {
+				vertical-align: top;
+				display: inline-block;
+				margin: 0 0.5em;
+				font-size: 0.75em;
+				letter-spacing: -0.01em;
+
+				a {
+					color: $black_3;
+					text-decoration: none;
+
+					&:hover {
+						color: $black_1;
+						}
+					}
+				}
+			}
+		}
 	}

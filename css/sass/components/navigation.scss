@@ -1,27 +1,32 @@
 #page-header {
 	nav[role="navigation"] {
-		padding: 1.0em 1.5em 0.375em 1.5em;
+		padding: 1.0em 1.5em 1.0em 1.5em;
 		}
 
 	ul[role="menubar"] {
 		li {
-			vertical-align: text-bottom;
+			vertical-align: baseline;
 			display: inline-block;
 			margin-right: 1.25em;
 
 			a {
 				color: $black_3;
-				font-size: 1.0em;
+				font-size: 0.9375em;
 				letter-spacing: -0.01em;
 				}
 
 			// Logo
 			&:first-of-type {
-				a {
+				span {
 					color: $black_5;
-					font-size: 1.375em;
+					font-size: 1.125em;
 					font-weight: 700;
 					letter-spacing: -0.005em;
+					@include unselectable();
+
+					&:hover {
+						text-decoration: none;
+						}
 					}
 				}
 

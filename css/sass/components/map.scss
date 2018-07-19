@@ -10,4 +10,229 @@
 		width: inherit;
 		height: inherit;
 		}
+
+	#legend-button {
+		width: auto;
+		}
+
+	// Search area radius shape
+	.leaflet-overlay-pane path {
+		cursor: -webkit-grab;
+		cursor: grab;
+
+		&:active {
+			cursor: -webkit-grabbing;
+			cursor: grabbing;
+			}
+		}
+
+	// Clustered number marker
+	.marker-cluster {
+		cursor: pointer;
+		overflow: visible;
+		text-align: center;
+		color: $white;
+		@include box-sizing(border-box);
+
+		div {
+			width: 100%;
+			height: 100%;
+			font-size: inherit;
+			font-weight: 500;
+			letter-spacing: -0.01em;
+			border: 1px solid $white;
+			background-color: $blue;
+			@include opacity(0.88);
+			@include border-radius(50%);
+			@include box-shadow(0px,5px,10px,0px,0.25);
+			@include transition(all,120,ease-in-out);
+
+			&:hover {
+				@include opacity(1.0);
+				@include box-shadow(0px,5px,10px,3px,0.25);
+				}
+
+			span {
+				}
+			}
+
+		&.marker-cluster-small {
+			width: 40px !important;
+			height: 40px !important;
+			margin-left: -20px !important;
+			margin-top: -20px !important;
+			font-size: 13px !important;
+
+			div {
+				span {
+					line-height: 36px;
+					}
+				}
+			}
+
+		&.marker-cluster-medium {
+			width: 50px !important;
+			height: 50px !important;
+			margin-left: -25px !important;
+			margin-top: -25px !important;
+			font-size: 14px;
+
+			div {
+				span {
+					line-height: 46px;
+					}
+				}
+			}
+
+		&.marker-cluster-large {
+			width: 60px !important;
+			height: 60px !important;
+			margin-left: -30px !important;
+			margin-top: -30px !important;
+			font-size: 15px;
+
+			div {
+				span {
+					line-height: 56px;
+					}
+				}
+			}
+		}
+	}
+
+// location pin
+.leaflet-container img.leaflet-marker-icon:first-of-type {
+	cursor: -webkit-grab;
+	cursor: grab;
+
+	&:active {
+		cursor: -webkit-grabbing;
+		cursor: grabbing;
+		}
+	}
+
+// crime pin
+.leaflet-container img.leaflet-marker-icon:not(:first-of-type) {
+	width: 44px !important;
+	height: 44px !important;
+	margin-left: -22px !important;
+	margin-top: -42px !important;
+	@include opacity(0.92);
+	@include transition(all,120,ease-in-out);
+
+	&:hover {
+		@include opacity(1.0);
+		}
+	}
+
+// Crime pin popup
+.leaflet-popup-close-button + .leaflet-popup-content-wrapper .leaflet-popup-content {
+	padding: 2.75em 2em 2.5em 2em;
+	font-size: 14px;
+	font-weight: 600;
+	@include border-radius(3px);
+	@include box-shadow(0px,5px,10px,3px,0.25);
+	}
+
+.leaflet-popup-close-button,
+.map-tooltip.closable .close,
+.close-button {
+	cursor: pointer;
+	position: absolute;
+	top: 0.5em;
+	right: 0.3125em;
+	width: 2.0em;
+	height: 2.0em;
+	font-size: 16px;
+	background: none;
+	@include opacity(1.0);
+
+	&.middle {
+		top: 50%;
+		margin-top: -1.0em;
+		}
+
+	&:hover {
+		background: none;
+
+		&:after,
+		&:before {
+			background-color: $black_1;
+			}
+		}
+
+	&:active {
+		&:after,
+		&:before {
+			background-color: $black_0;
+			}
+		}
+
+	&:after,
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+			top: 50%;
+			right: 50%;
+		width: 1em;
+		height: 0.1875em;
+		margin-top: -0.125em;
+		margin-right: -0.5em;
+		background-color: $black_2;
+		}
+	&:after {
+		@include transform-rotate(-45deg);
+		}// :after
+	&:before {
+		@include transform-rotate(45deg);
+		}// :before
+	}
+
+.leaflet-popup-tip-container {
+	margin-top: -1px;
+	}
+
+// Map legend
+#myLegend {
+	// main popup wrapper
+	.modal-content {
+		overflow: hidden;
+		@include box-shadow(0px,10px,20px,0px,0.5);
+		}
+
+	.modal-header {
+		position: relative;
+		padding: 1.0em;
+
+		.modal-title {
+			font-size: 1.125em;
+			font-weight: 600;
+			line-height: 200%;
+			}
+
+		.close-button {
+			right: 1.0em;
+			}
+		}
+
+	.legend-body {
+		padding: 2em 1.75em 1.5em 1.0em;
+		background-color: $black_6;
+		}
+
+	.legend-row {
+		& > div {
+			height: 80px;
+			margin-bottom: 1.5em;
+			font-size: 0.875em;
+			text-align: center;
+			}
+		}
+
+	.legend-icon {
+		width: 44px;
+		height: 44px;
+		margin-bottom: 6px;
+		}
 	}
